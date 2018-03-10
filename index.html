@@ -12,140 +12,8 @@
 <head>
     <meta charset="utf-8"/>
     <title></title>
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            margin: 0 auto;
-            width: 302px;
-            height: 302px;
-            overflow: hidden;
-            background-color: #e7eac875;
-            float: left;
-        }
-
-        .container .item {
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
-            float: left;
-            text-align: center;
-            font-size: 30px;
-            color: #5a5555;
-            border-bottom: 1px solid white;
-        }
-
-        .container .item:nth-child(3n+2) {
-            border-left: 1px solid white;
-            border-right: 1px solid white;
-        }
-
-        .header {
-            margin: 0 auto;
-            text-align: center;
-            height: 60px;
-        }
-
-        .body {
-            width: 80%;
-            margin: 0 10%;
-            min-width: 700px;
-            overflow: hidden;
-        }
-
-        .tab_additional {
-            width: 100%;
-            text-align: left;
-            padding-bottom: 10px;
-            padding-top: 10px;
-        }
-
-        .start {
-            padding: 5px 15px;
-            color: #FFFFFF;
-            background-color: green;
-            border-radius: 6px;
-            text-decoration: none;
-        }
-
-        .start:hover {
-            background-color: darkgreen;
-        }
-
-        .right {
-            width: 20%;
-            float: right;
-        }
-
-        .right ul {
-            list-style: none;
-        }
-
-        .mask {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #cecece;
-            position: fixed;
-            opacity: 0.8;
-            display: none;
-        }
-
-        .form {
-            display: none;
-            width: 50%;
-            min-width: 500px;
-            position: absolute;
-            padding-top: 60px;
-            margin: 0 25%;
-            text-align: center;
-            z-index: 7;
-            background-color: #fff;
-        }
-
-        .form h2 {
-            padding-bottom: 15px;
-        }
-
-        .form p {
-            padding: 5px 0;
-        }
-
-        .form p input {
-            outline: unset;
-            border: none;
-            background-color: #fd0000;
-            height: 25px;
-            color: yellow;
-            line-height: 25px;
-            border-radius: 6px;
-            text-align: center;
-        }
-
-        .form .btn-submit {
-            padding: 10px 30px;
-            display: inline-block;
-            background-color: #fd0000;
-            text-decoration: none;
-            color: yellow;
-            border-radius: 7px;
-        }
-
-        #msg {
-            display: none;
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: #0d86c1;
-            color: #fff;
-            padding: 10px;
-            max-width: 130px;
-            z-index: 1;
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 </head>
 <body>
 <div id="msg"></div>
@@ -227,28 +95,29 @@
         if (typeof username != 'string' || username === '') {
             showError('请阁下告知您的大名，好让我们铭记于心。')
         }
-        setCookie('cc_2048_username',username,360);
+        setCookie('cc_2048_username', username, 360);
         var data = '';
         data += 'username=' + getCookie('cc_2048_username') + '&score=' + gamer_factory.max()
             + '&step=' + gamer_factory.step_round;
         var ajax_obj = getAjaxObject();
         ajax_obj.onstatechange = function () {
-            if (ajax_obj.readyState===4 && ajax_obj.status===200)
-            {
-                var res =xmlhttp.responseText;
-                if(res!=='')
-                {
+            if (ajax_obj.readyState === 4 && ajax_obj.status === 200) {
+                var res = xmlhttp.responseText;
+                if (res !== '') {
 
                 }
-                try{
-                    setCookie('uuid',res)
-                }catch (e){
+                try {
+                    setCookie('uuid', res)
+                } catch (e) {
 
                 }
             }
         };
         post(ajax_obj, '/2048/info_cal_in.php', data);
     }
+
+
+
 </script>
 
 </html>

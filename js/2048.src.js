@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2018. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
  * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
@@ -256,6 +255,47 @@ function Game_2048() {
                 default:
             }
         }
+
+        var startX, startY, moveEndX, moveEndY, X, Y;
+
+        document.body.addEventListener('touchstart', function (e) {
+
+            e.preventDefault();
+
+            startX = e.touches[0].pageX;
+
+            startY = e.touches[0].pageY;
+
+        }, false);
+
+        document.body.addEventListener('touchend', function (e) {
+            console.log(e);
+            moveEndX = e.changedTouches[0].pageX;
+            moveEndY = e.changedTouches[0].pageY;
+            xmoved = moveEndX - startX;
+            ymoved = moveEndY - startY;
+            var moveTag = '';
+            if (Math.abs(xmoved) > Math.abs(ymoved)) {
+                if (xmoved > 0) {
+                    console.log('right');
+                    moveTag = 'right';
+                } else {
+                    moveTag = 'left';
+                    console.log('left');
+                }
+            } else {
+                if (ymoved > 0) {
+                    moveTag = 'bottom';
+                    console.log('bottom');
+                } else {
+                    moveTag = 'top';
+                    console.log('top');
+                }
+            }
+            gamer_factory.move(moveTag);
+        })
+
+
     }
 }
 
