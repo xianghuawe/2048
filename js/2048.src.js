@@ -18,6 +18,7 @@ function Game_2048() {
 	this.action_start_val = '';
 	this.action_end_val = '';
 	this.game_stop_flag = false;
+ 
 	this.getrandom_num_in_array = function() {
 		var i = Math.random(0) * (this.num.length - 1);
 		return Math.random(0) < 0.9 ? 2 : 4;
@@ -55,7 +56,7 @@ function Game_2048() {
 		}
 		this.move_to_side_num(items);
 	}
-	 
+
 	this.array_equals = function(arr1, arr2) {
 		if(typeof arr1 !== typeof arr2) {
 			if(typeof arr1 === 'array') {
@@ -197,6 +198,52 @@ function Game_2048() {
 			} else {
 				this.item[i].innerText = '';
 			}
+			var color = '';
+			switch(this.item_val[i]){
+				case 0:
+				color = '#CDC1B4';
+				break;
+				case 2:
+				color='#cc9966';
+				break;
+				case 4:
+				color = '#996633';
+				break;
+				case 8:
+				color = '#999966';
+				break;
+				case 16:
+				color = '#cc6666';
+				break;
+				case 32:
+				color = '#ff9999';
+				break;
+				case 64:
+				color = '#ff6633';
+				break;
+				case 128:
+				color = '#999999';
+				break;
+				case 256:
+				color = '#336600';
+				break;
+				case 512:
+				color = '#6699cc';
+				break;
+				case 1024:
+				color='#663399';
+				break;
+				case 2048:
+				color = '#330033';
+				case 4096:
+				color = '#006600';
+				break;
+				case 8192:
+				color = '#333300';
+				default:
+				color = '#000000';
+			}
+			this.item[i].style.backgroundColor = color;
 		}
 		++this.step_all;
 		++this.step_round;
