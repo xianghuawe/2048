@@ -7,205 +7,199 @@
  */
 
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 html {
-    font-size: 10px
+	font-size: 10px
 }
 
 @media screen and (min-width: 321px) and (max-width: 375px) {
-    html {
-        font-size: 11px
-    }
+	html {
+		font-size: 11px
+	}
 }
 
 @media screen and (min-width: 376px) and (max-width: 414px) {
-    html {
-        font-size: 12px
-    }
+	html {
+		font-size: 12px
+	}
 }
 
 @media screen and (min-width: 415px) and (max-width: 639px) {
-    html {
-        font-size: 15px
-    }
+	html {
+		font-size: 15px
+	}
 }
 
 @media screen and (min-width: 640px) and (max-width: 719px) {
-    html {
-        font-size: 20px
-    }
+	html {
+		font-size: 20px
+	}
 }
 
 @media screen and (min-width: 720px) and (max-width: 749px) {
-    html {
-        font-size: 22.5px
-    }
+	html {
+		font-size: 22.5px
+	}
 }
 
 @media screen and (min-width: 750px) and (max-width: 799px) {
-    html {
-        font-size: 23.5px
-    }
+	html {
+		font-size: 23.5px
+	}
 }
 
 @media screen and (min-width: 800px) {
-    html {
-        font-size: 25px
-    }
+	html {
+		font-size: 25px
+	}
 }
 
 .container {
-    margin: 0 auto;
-    width: 302px;
-    height: 302px;
-    overflow: hidden;
-    background-color: #e7eac875;
-    float: left;
+	margin: 0 auto;
+	width: 285px;
+	height: 285px;
+	overflow: hidden;
+	background-color: #BBADA0;
+	padding: 7.5px;
+	float: left;
 }
 
 .container .item {
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    float: left;
-    text-align: center;
-    font-size: 30px;
-    color: #5a5555;
-    border-bottom: 1px solid white;
-}
-
-.container .item:nth-child(3n+2) {
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+	width: 65px;
+	height: 65px;
+	line-height: 65px;
+	float: left;
+	text-align: center;
+	font-size: 30px;
+	color: whitesmoke;
+	background-color: #CDC1B4;
+	margin-bottom: 8px;
+	margin-left: 5px;
 }
 
 .header {
-    margin: 0 auto;
-    text-align: center;
-    height: 60px;
+	margin: 0 auto;
+	text-align: center;
+	height: 60px;
 }
 
 .body {
-    width: 80%;
-    margin: 0 10%;
-    min-width: 700px;
-    padding: 60px;
-    overflow: hidden;
+	width: 80%;
+	margin: 0 10%;
+	min-width: 700px;
+	padding: 60px;
+	overflow: hidden;
 }
 
 .tab_additional {
-    width: 100%;
-    text-align: left;
-    padding-bottom: 10px;
-    padding-top: 10px;
+	width: 100%;
+	text-align: left;
+	padding-bottom: 10px;
+	padding-top: 10px;
 }
 
 .start {
-    padding: 5px 15px;
-    color: #FFFFFF;
-    background-color: green;
-    border-radius: 6px;
-    text-decoration: none;
+	padding: 5px 15px;
+	color: #FFFFFF;
+	background-color: #8F7A66;
+	border-radius: 6px;
+	text-decoration: none;
 }
 
 .start:hover {
-    background-color: darkgreen;
+	background-color: #7b6855;
 }
 
 .right {
-    width: 20%;
-    float: right;
+	width: 20%;
+	float: right;
 }
 
 .right ul {
-    list-style: none;
+	list-style: none;
 }
 
 .mask {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: #cecece;
-    position: fixed;
-    opacity: 0.8;
-    display: none;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #cecece;
+	position: fixed;
+	opacity: 0.8;
+	display: none;
 }
 
 .form {
-    display: none;
-    width: 50%;
-    min-width: 500px;
-    position: absolute;
-    padding-top: 60px;
-    margin: 0 25%;
-    text-align: center;
-    z-index: 7;
-    background-color: #fff;
+	display: none;
+	width: 50%;
+	min-width: 500px;
+	position: absolute;
+	padding-top: 60px;
+	margin: 0 25%;
+	text-align: center;
+	z-index: 7;
+	background-color: #fff;
 }
 
 .form h2 {
-    padding-bottom: 15px;
+	padding-bottom: 15px;
 }
 
 .form p {
-    padding: 5px 0;
+	padding: 5px 0;
 }
 
 .form p input {
-    outline: unset;
-    border: none;
-    background-color: #fd0000;
-    height: 25px;
-    color: yellow;
-    line-height: 25px;
-    border-radius: 6px;
-    text-align: center;
+	outline: unset;
+	border: none;
+	background-color: #fd0000;
+	height: 25px;
+	color: yellow;
+	line-height: 25px;
+	border-radius: 6px;
+	text-align: center;
 }
 
 .form .btn-submit {
-    padding: 10px 30px;
-    display: inline-block;
-    background-color: #fd0000;
-    text-decoration: none;
-    color: yellow;
-    border-radius: 7px;
+	padding: 10px 30px;
+	display: inline-block;
+	background-color: #fd0000;
+	text-decoration: none;
+	color: yellow;
+	border-radius: 7px;
 }
 
 #msg {
-    display: none;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: #0d86c1;
-    color: #fff;
-    padding: 10px;
-    max-width: 130px;
-    z-index: 1;
+	display: none;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	background: #0d86c1;
+	color: #fff;
+	padding: 10px;
+	max-width: 130px;
+	z-index: 1;
 }
 
 @media screen and (max-width: 480px) {
-    .body {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        min-width: unset;
-        padding: unset;
-    }
-
-    .container {
-        float: none;
-
-    }
-
-    .right {
-        float: none;
-    }
-
-    .tab_additional {
-        width: 302px;
-        margin: 0 auto;
-    }
+	.body {
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+		min-width: unset;
+		padding: unset;
+	}
+	.container {
+		float: none;
+	}
+	.right {
+		float: none;
+	}
+	.tab_additional {
+		width: 302px;
+		margin: 0 auto;
+	}
 }
