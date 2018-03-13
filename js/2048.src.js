@@ -211,6 +211,7 @@ function Game_2048() {
 		for(var i = 0;i <= this.now_level_number;++i)
 		{
 			var tmpindex = Math.round(Math.random() * needfilledin.length);
+			tmpindex = needfilledin[tmpindex];
 			this.item_val[tmpindex]=this.getrandom_num_in_array();
 		}
 		
