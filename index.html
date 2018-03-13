@@ -9,122 +9,143 @@
 
 <html>
 
-<head>
-    <meta charset="utf-8"/>
-    <title></title>
-    <link rel="stylesheet" href="css/main.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-</head>
-<body>
-<div id="msg"></div>
-<div class="mask">
-</div>
-<div class="form">
-    <h2>您本次最高分为<span id="max-score" style="color: red;">0</span>!</h2>
-    <p><label for="nickname">留下您的大名，让江湖人尽皆知吧！</label><input type="text" id="nickname"></p>
-    <p><a class="btn-submit" href="javascript:void(0)" onclick="no_cookies_name_submit()">昭告天下</a></p>
-</div>
-<div class="header">
-    <p id="message_label"></p>
-</div>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	</head>
 
-<div class="body">
-    <div class="tab_additional">
-        <a href="javascript:gamestart()" class="start">开始</a>
-        <label>当前步数</label>
-        <span id="step_round">0</span><label>总步数</label>
-        <span id="step_all">0</span>
-    </div>
-    <div id="container" class="container">
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-    </div>
-    <div class="right">
-        <h5>排行榜</h5>
-        <ul>
-            <li></li>
-        </ul>
-    </div>
-</div>
-</body>
-<script src="js/2048.src.js" type="text/javascript"></script>
-<script src="js/tool.cookie.js" type="text/javascript"></script>
-<script type="text/javascript">
-    function gamestart() {
-        var game_box = document.getElementById('container');
-        gamer_factory.init(game_box, "{'count_round':'step_round','count_all':'step_all','error_label':'message_label','level':1}");
-    }
+	<body>
+		<div id="msg"></div>
+		<div class="mask">
+		</div>
+		<div class="form">
+			<h2>您本次最高分为<span id="max-score" style="color: red;">0</span>!</h2>
+			<p><label for="nickname">留下您的大名，让江湖人尽皆知吧！</label><input type="text" id="nickname"></p>
+			<p>
+				<a class="btn-submit" href="javascript:void(0)" onclick="no_cookies_name_submit()">昭告天下</a>
+			</p>
+		</div>
+		<div class="header">
+			<p id="message_label"></p>
+		</div>
 
-    gamer_factory.end = function () {
-        return false;
-        if (getCookie('cc_2048_username')) {
-            //本次存储有用户名
-            var data = '';
-            data += 'username=' + getCookie('cc_2048_username') + '&score=' + gamer_factory.max()
-                + '&step=' + gamer_factory.step_round;
-            var ajax_obj = getAjaxObject();
-            ajax_obj.onstatechange = function (ev) {
+		<div class="body">
+			<div class="left">
+			<div class="tab_additional">
+				<a href="javascript:gamestart()" class="start">开始</a>
+				<label></label>
+				<span id="step_round" title="当前步数">0</span><label></label>
+				<span id="step_all" title="总步数">0</span>
+			</div>
+			<div id="container" class="container">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+			</div>
+			<div class="right">
+				<h5>排行榜</h5>
+				<ul>
+					<li><label for=""><img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKdDbru8q7iaic5VHcQqSnYicZkHPNiad5UXWl23wZibdSicrL9abOofuqdux4YxZGl5BUEyB5zRQm9DuzQ/132"/></label>
+						<span class="username">可可</span>
+						<span class="max-score">2048</span>
+						<span class="date">2018-3-13 11:04</span>
+					</li>
+					<li><label for=""><img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKdDbru8q7iaic5VHcQqSnYicZkHPNiad5UXWl23wZibdSicrL9abOofuqdux4YxZGl5BUEyB5zRQm9DuzQ/132"/></label>
+						<span class="username">可可</span>
+						<span class="max-score">2048</span>
+						<span class="date">2018-3-13 11:04</span>
+					</li>
+					<li><label for=""><img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKdDbru8q7iaic5VHcQqSnYicZkHPNiad5UXWl23wZibdSicrL9abOofuqdux4YxZGl5BUEyB5zRQm9DuzQ/132"/></label>
+						<span class="username">可可</span>
+						<span class="max-score">2048</span>
+						<span class="date">2018-3-13 11:04</span>
+					</li>
+					<li><label for=""><img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKdDbru8q7iaic5VHcQqSnYicZkHPNiad5UXWl23wZibdSicrL9abOofuqdux4YxZGl5BUEyB5zRQm9DuzQ/132"/></label>
+						<span class="username">可可</span>
+						<span class="max-score">2048</span>
+						<span class="date">2018-3-13 11:04</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="js/2048.src.js" type="text/javascript"></script>
+	<script src="js/tool.cookie.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		function gamestart() {
+			var game_box = document.getElementById('container');
+			gamer_factory.init(game_box, "{'count_round':'step_round','count_all':'step_all','error_label':'message_label','level':1}");
+		}
 
-            }
-            post(ajax_obj, '/2048/info_cal_in.php', data);
+		gamer_factory.end = function() {
+			return false;
+			if(getCookie('cc_2048_username')) {
+				//本次存储有用户名
+				var data = '';
+				data += 'username=' + getCookie('cc_2048_username') + '&score=' + gamer_factory.max() +
+					'&step=' + gamer_factory.step_round;
+				var ajax_obj = getAjaxObject();
+				ajax_obj.onstatechange = function(ev) {
 
-        } else {
-            document.getElementsByClassName('mask')[0].style.display = 'block';
-            document.getElementsByClassName('form')[0].style.display = 'block';
-        }
-    }
+				}
+				post(ajax_obj, '/2048/info_cal_in.php', data);
 
-    function showError(str) {
-        var msgobj = document.getElementById('msg');
-        msgobj.innerHTML = str;
-        msgobj.style.display = 'block';
-        setTimeout(function () {
-            msgobj.style.display = 'none';
-        }, 3000)
-    }
+			} else {
+				document.getElementsByClassName('mask')[0].style.display = 'block';
+				document.getElementsByClassName('form')[0].style.display = 'block';
+			}
+		}
 
-    function no_cookies_name_submit() {
-        var username = document.getElementById('nickname').value.replace(/(^\s*)|(\s*$)/g, '');
-        if (typeof username != 'string' || username === '') {
-            showError('请阁下告知您的大名，好让我们铭记于心。')
-        }
-        setCookie('cc_2048_username', username, 360);
-        var data = '';
-        data += 'username=' + getCookie('cc_2048_username') + '&score=' + gamer_factory.max()
-            + '&step=' + gamer_factory.step_round;
-        var ajax_obj = getAjaxObject();
-        ajax_obj.onstatechange = function () {
-            if (ajax_obj.readyState === 4 && ajax_obj.status === 200) {
-                var res = xmlhttp.responseText;
-                if (res !== '') {
+		function showError(str) {
+			var msgobj = document.getElementById('msg');
+			msgobj.innerHTML = str;
+			msgobj.style.display = 'block';
+			setTimeout(function() {
+				msgobj.style.display = 'none';
+			}, 3000)
+		}
 
-                }
-                try {
-                    setCookie('uuid', res)
-                } catch (e) {
+		function no_cookies_name_submit() {
+			var username = document.getElementById('nickname').value.replace(/(^\s*)|(\s*$)/g, '');
+			if(typeof username != 'string' || username === '') {
+				showError('请阁下告知您的大名，好让我们铭记于心。')
+			}
+			setCookie('cc_2048_username', username, 360);
+			var data = '';
+			data += 'username=' + getCookie('cc_2048_username') + '&score=' + gamer_factory.max() +
+				'&step=' + gamer_factory.step_round;
+			var ajax_obj = getAjaxObject();
+			ajax_obj.onstatechange = function() {
+				if(ajax_obj.readyState === 4 && ajax_obj.status === 200) {
+					var res = xmlhttp.responseText;
+					if(res !== '') {
 
-                }
-            }
-        };
-        post(ajax_obj, '/2048/info_cal_in.php', data);
-    }
+					}
+					try {
+						setCookie('uuid', res)
+					} catch(e) {
 
-
-
-</script>
+					}
+				}
+			};
+			post(ajax_obj, '/2048/info_cal_in.php', data);
+		}
+	</script>
 
 </html>

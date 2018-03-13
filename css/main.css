@@ -57,27 +57,8 @@ html {
 	}
 }
 
-.container {
-	margin: 0 auto;
-	width: 285px;
-	height: 285px;
-	overflow: hidden;
-	background-color: #BBADA0;
-	padding: 7.5px;
-	float: left;
-}
-
-.container .item {
-	width: 65px;
-	height: 65px;
-	line-height: 65px;
-	float: left;
-	text-align: center;
-	font-size: 30px;
-	color: whitesmoke;
-	background-color: #CDC1B4;
-	margin-bottom: 8px;
-	margin-left: 5px;
+body {
+	background-color: #cecece;
 }
 
 .header {
@@ -87,8 +68,8 @@ html {
 }
 
 .body {
-	width: 80%;
-	margin: 0 10%;
+	width: 1200px;
+	margin: 0 auto;
 	min-width: 700px;
 	padding: 60px;
 	overflow: hidden;
@@ -113,13 +94,81 @@ html {
 	background-color: #7b6855;
 }
 
-.right {
-	width: 20%;
-	float: right;
+.body .left {
+	float: left;
+	width: 50%;
+}
+
+.container {
+	margin: 0 auto;
+	width: 365px;
+	height: 365px;
+	overflow: hidden;
+	background-color: #BBADA0;
+	padding: 7.5px;
+	float: left;
+}
+
+.container .item {
+	width: 85px;
+	height: 85px;
+	line-height: 85px;
+	float: left;
+	text-align: center;
+	font-size: 30px;
+	color: whitesmoke;
+	background-color: #CDC1B4;
+	margin-bottom: 8px;
+	margin-left: 8px;
+}
+
+.container .item:nth-child(4n+1) {
+	margin-left: 0;
+}
+
+.body .right {
+	width: 50%;
+	float: left;
 }
 
 .right ul {
 	list-style: none;
+}
+
+.right ul li {
+	display: block;
+	width: 100%;
+	line-height: 50px;
+	font-size: 16px;
+}
+
+.right ul li label {
+	border-radius: 20px;
+	overflow: hidden;
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	vertical-align: middle;
+}
+
+.right ul li label img {
+	width: 100%;
+}
+
+.right ul li .username {
+	vertical-align: top;
+	height: 50px;
+	line-height: 50px;
+	display: inline-block;
+}
+
+.right ul li .max-score {
+	font-family: FANTASY;
+}
+
+.right ul li .date {
+	font-size: 12px;
+	letter-spacing: -0.5px;
 }
 
 .mask {
@@ -183,7 +232,16 @@ html {
 	max-width: 130px;
 	z-index: 1;
 }
-
+#step_round,#step_all{
+	padding-left: 7px;
+	padding-right: 7px;
+}
+#step_all{
+	color: brown;
+}
+#step_round{
+	color: bisque;
+}
 @media screen and (max-width: 480px) {
 	.body {
 		width: 100%;
