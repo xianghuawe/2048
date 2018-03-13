@@ -18,7 +18,7 @@ function Game_2048() {
 	this.action_start_val = '';
 	this.action_end_val = '';
 	this.game_stop_flag = false;
- 
+
 	this.getrandom_num_in_array = function() {
 		var i = Math.random(0) * (this.num.length - 1);
 		return Math.random(0) < 0.9 ? 2 : 4;
@@ -184,68 +184,8 @@ function Game_2048() {
 			this.calculate_flag = false;
 			return false;
 		}
-		/*  填充和显示 */
-		var tmp_filled = 0;
-		for(i = 0; i < this.item.length; ++i) {
-			if(this.item_val[i] === 0) {
-				if((tmp_filled === 99999 && tmp_filled < this.now_level_number) || (this.getrandom_bool() && tmp_filled < this.now_level_number)) {
-					this.item_val[i] = this.getrandom_num_in_array();
-					++tmp_filled;
-				}
-			}
-			if(this.item_val[i] !== 0) {
-				this.item[i].innerText = this.item_val[i];
-			} else {
-				this.item[i].innerText = '';
-			}
-			var color = '';
-			switch(this.item_val[i]){
-				case 0:
-				color = '#CDC1B4';
-				break;
-				case 2:
-				color='#cc9966';
-				break;
-				case 4:
-				color = '#996633';
-				break;
-				case 8:
-				color = '#999966';
-				break;
-				case 16:
-				color = '#cc6666';
-				break;
-				case 32:
-				color = '#ff9999';
-				break;
-				case 64:
-				color = '#ff6633';
-				break;
-				case 128:
-				color = '#999999';
-				break;
-				case 256:
-				color = '#336600';
-				break;
-				case 512:
-				color = '#6699cc';
-				break;
-				case 1024:
-				color='#663399';
-				break;
-				case 2048:
-				color = '#330033';
-				case 4096:
-				color = '#006600';
-				break;
-				case 8192:
-				color = '#333300';
-				default:
-				color = '#000000';
-			}
-			this.item[i].style.backgroundColor = color;
-		}
-		++this.step_all;
+		this.fill_in()
+			++this.step_all;
 		++this.step_round;
 		try {
 			document.getElementById(this.count_round).innerHTML = this.step_round;
@@ -255,6 +195,90 @@ function Game_2048() {
 		}
 		this.calculate_flag = false;
 	};
+
+	this.fill_in = function() {
+
+		/*  填充和显示 */
+		
+		//检索出为零的索引
+		var needfilledin = [];
+		for(var i=0;i<this.item.length;++i){
+			if(this.item_val[i]===0)
+			{
+				needfilledin.unshift(i);
+			}
+		}
+		for(var i = 0;i <= this.now_level_number;++i)
+		{
+			var tmpindex = Math.round(Math.random() * needfilledin.length);
+			this.item_val[tmpindex]=this.getrandom_num_in_array();
+		}
+		
+		
+		
+		
+//		var tmp_filled = 0;
+		
+		for(i = 0; i < this.item.length; ++i) {
+//			if(this.item_val[i] === 0) {
+//				if((tmp_filled === 99999 && tmp_filled < this.now_level_number) || (this.getrandom_bool() && tmp_filled < this.now_level_number)) {
+//					this.item_val[i] = this.getrandom_num_in_array();
+//					++tmp_filled;
+//				}
+//			}
+			if(this.item_val[i] !== 0) {
+				this.item[i].innerText = this.item_val[i];
+			} else {
+				this.item[i].innerText = '';
+			}
+			var color = '';
+			switch(this.item_val[i]) {
+				case 0:
+					color = '#CDC1B4';
+					break;
+				case 2:
+					color = '#cc9966';
+					break;
+				case 4:
+					color = '#996633';
+					break;
+				case 8:
+					color = '#999966';
+					break;
+				case 16:
+					color = '#cc6666';
+					break;
+				case 32:
+					color = '#ff9999';
+					break;
+				case 64:
+					color = '#ff6633';
+					break;
+				case 128:
+					color = '#999999';
+					break;
+				case 256:
+					color = '#336600';
+					break;
+				case 512:
+					color = '#6699cc';
+					break;
+				case 1024:
+					color = '#663399';
+					break;
+				case 2048:
+					color = '#330033';
+				case 4096:
+					color = '#006600';
+					break;
+				case 8192:
+					color = '#333300';
+				default:
+					color = '#000000';
+			}
+			this.item[i].style.backgroundColor = color;
+		}
+	}
 
 	this.init = function(container, option) {
 		if(eval('(' + option + ')')) {
@@ -284,7 +308,7 @@ function Game_2048() {
 		console.log(tmp_init_filledin);
 		for(var i = 0; i < this.item.length; ++i) {
 			tmp_val = 0;
-			if((tmp_filled === 0 && tmp_filled < tmp_init_filledin) || (this.getrandom_bool() && tmp_filled < tmp_init_filledin)) {
+			if((tmp_filled === 0 && tmp_filled < tmp_init_filledin && i == this.item.length - 1) || (this.getrandom_bool() && tmp_filled < tmp_init_filledin)) {
 				tmp_val = this.getrandom_num_in_array();
 				this.item[i].innerHTML = tmp_val;
 				++tmp_filled;
@@ -292,6 +316,52 @@ function Game_2048() {
 				this.item[i].innerHTML = '';
 			}
 			this.item_val[i] = tmp_val;
+			var color = '';
+			switch(this.item_val[i]) {
+				case 0:
+					color = '#CDC1B4';
+					break;
+				case 2:
+					color = '#cc9966';
+					break;
+				case 4:
+					color = '#996633';
+					break;
+				case 8:
+					color = '#999966';
+					break;
+				case 16:
+					color = '#cc6666';
+					break;
+				case 32:
+					color = '#ff9999';
+					break;
+				case 64:
+					color = '#ff6633';
+					break;
+				case 128:
+					color = '#999999';
+					break;
+				case 256:
+					color = '#336600';
+					break;
+				case 512:
+					color = '#6699cc';
+					break;
+				case 1024:
+					color = '#663399';
+					break;
+				case 2048:
+					color = '#330033';
+				case 4096:
+					color = '#006600';
+					break;
+				case 8192:
+					color = '#333300';
+				default:
+					color = '#000000';
+			}
+			this.item[i].style.backgroundColor = color;
 		}
 		try {
 			document.getElementById(this.count_round).innerHTML = 0;
