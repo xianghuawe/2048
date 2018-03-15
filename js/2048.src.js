@@ -12,7 +12,7 @@ function Game_2048() {
 	this.step_round = 0;
 	this.step_all = 0;
 	this.level = 2;
-	this.now_level_number;
+	this.now_level_number=0;
 	this.level_number = [1, 2, 3, 4];
 	this.level_init = [2, 3, 4, 5]
 	this.action_start_val = '';
@@ -29,7 +29,7 @@ function Game_2048() {
 	this.calculate_flag = false;
 	this.move_to_side_num = function(items) {
 		for(var i = items.length - 1; i >= 0; --i) {
-			if(items[i] == 0) {
+			if(items[i] === 0) {
 				for(var k = i; k < items.length; ++k) {
 					items[k] = typeof items[k + 1] === 'undefined' ? 0 : items[k + 1];
 				}
@@ -43,7 +43,7 @@ function Game_2048() {
 		items_copy = items.slice();
 		var step_for = 2;
 		for(var i = 0; i < items.length; i += step_for) {
-			if(items[i] == 0) {
+			if(items[i] === 0) {
 				break;
 			}
 			if(items[i] === items[i + 1]) {
@@ -112,8 +112,8 @@ function Game_2048() {
 		}
 		if(this.game_stop_flag) {
 			this.calculate_flag = false;
-			document.getElementById(this.error_label).innerHTML = 'this round already ended!you can try start again.';
-			console.log('this round already ended!you can try start again.');
+			document.getElementById(this.error_label).innerHTML = 'Game over';
+			console.log('Game over');
 			this.end();
 			return false;
 		}
@@ -214,19 +214,7 @@ function Game_2048() {
 			tmpindex = needfilledin[tmpindex];
 			this.item_val[tmpindex]=this.getrandom_num_in_array();
 		}
-		
-		
-		
-		
-//		var tmp_filled = 0;
-		
 		for(i = 0; i < this.item.length; ++i) {
-//			if(this.item_val[i] === 0) {
-//				if((tmp_filled === 99999 && tmp_filled < this.now_level_number) || (this.getrandom_bool() && tmp_filled < this.now_level_number)) {
-//					this.item_val[i] = this.getrandom_num_in_array();
-//					++tmp_filled;
-//				}
-//			}
 			if(this.item_val[i] !== 0) {
 				this.item[i].innerText = this.item_val[i];
 			} else {
@@ -269,11 +257,13 @@ function Game_2048() {
 					break;
 				case 2048:
 					color = '#330033';
+					break;
 				case 4096:
 					color = '#006600';
 					break;
 				case 8192:
 					color = '#333300';
+					break;
 				default:
 					color = '#000000';
 			}
@@ -309,7 +299,7 @@ function Game_2048() {
 		console.log(tmp_init_filledin);
 		for(var i = 0; i < this.item.length; ++i) {
 			tmp_val = 0;
-			if((tmp_filled === 0 && tmp_filled < tmp_init_filledin && i == this.item.length - 1) || (this.getrandom_bool() && tmp_filled < tmp_init_filledin)) {
+			if((tmp_filled === 0 && tmp_filled < tmp_init_filledin && i === this.item.length - 1) || (this.getrandom_bool() && tmp_filled < tmp_init_filledin)) {
 				tmp_val = this.getrandom_num_in_array();
 				this.item[i].innerHTML = tmp_val;
 				++tmp_filled;
@@ -354,11 +344,13 @@ function Game_2048() {
 					break;
 				case 2048:
 					color = '#330033';
+					break;
 				case 4096:
 					color = '#006600';
 					break;
 				case 8192:
 					color = '#333300';
+					break;
 				default:
 					color = '#000000';
 			}
@@ -383,7 +375,7 @@ function Game_2048() {
 					break;
 				default:
 			}
-		}
+		};
 
 		var startX, startY, moveEndX, moveEndY, X, Y;
 
@@ -398,7 +390,6 @@ function Game_2048() {
 		}, false);
 
 		document.body.addEventListener('touchend', function(e) {
-			console.log(e);
 			moveEndX = e.changedTouches[0].pageX;
 			moveEndY = e.changedTouches[0].pageY;
 			xmoved = moveEndX - startX;
@@ -406,22 +397,21 @@ function Game_2048() {
 			var moveTag = '';
 			if(Math.abs(xmoved) > Math.abs(ymoved)) {
 				if(xmoved > 0) {
-					console.log('right');
 					moveTag = 'right';
 				} else {
 					moveTag = 'left';
-					console.log('left');
 				}
 			} else {
 				if(ymoved > 0) {
 					moveTag = 'bottom';
-					console.log('bottom');
 				} else {
 					moveTag = 'top';
-					console.log('top');
 				}
 			}
-			gamer_factory.move(moveTag);
+			if(moveTag!=='')
+			{
+                gamer_factory.move(moveTag);
+			}
 		})
 
 	}
