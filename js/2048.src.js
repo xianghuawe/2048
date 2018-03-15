@@ -14,10 +14,12 @@ function Game_2048() {
 	this.level = 2;
 	this.now_level_number=0;
 	this.level_number = [1, 2, 3, 4];
-	this.level_init = [2, 3, 4, 5]
+	this.level_init = [2, 3, 4, 5];
 	this.action_start_val = '';
 	this.action_end_val = '';
 	this.game_stop_flag = false;
+	this.score = 0;
+	this.score_label= '';
 
 	this.getrandom_num_in_array = function() {
 		var i = Math.random(0) * (this.num.length - 1);
@@ -37,8 +39,6 @@ function Game_2048() {
 		}
 	}
 	this.number_to_side_four = function(items) {
-		//将item里的数字全部向左移位
-		//1:去除item里的0
 		this.move_to_side_num(items);
 		items_copy = items.slice();
 		var step_for = 2;
@@ -59,7 +59,7 @@ function Game_2048() {
 
 	this.array_equals = function(arr1, arr2) {
 		if(typeof arr1 !== typeof arr2) {
-			if(typeof arr1 === 'array') {
+			if(typeof arr1 ===  "array") {
 				return false;
 			}
 		}
@@ -176,7 +176,7 @@ function Game_2048() {
 					this.game_stop_flag = true;
 					console.log('you got biggist number ' + this.max() + ' in this round.');
 					try {
-						document.getElementById(this.error_label).innerHTML = '您的最高得分为' + this.max();
+						document.getElementById(this.error_label).innerHTML = 'Game over.you got ' + this.max()+' this round.';
 					} catch(e) {}
 					return false;
 				}
@@ -184,12 +184,13 @@ function Game_2048() {
 			this.calculate_flag = false;
 			return false;
 		}
-		this.fill_in()
+		this.fill_in();
 			++this.step_all;
 		++this.step_round;
 		try {
 			document.getElementById(this.count_round).innerHTML = this.step_round;
 			document.getElementById(this.count_all).innerHTML = this.step_all;
+			document.getElementById(this.score_label).innerHTML = this.score;
 		} catch(e) {
 			//TODO handle the exception
 		}
@@ -214,7 +215,9 @@ function Game_2048() {
 			tmpindex = needfilledin[tmpindex];
 			this.item_val[tmpindex]=this.getrandom_num_in_array();
 		}
+		this.score=0;
 		for(i = 0; i < this.item.length; ++i) {
+		    this.score+=this.item_val[i];
 			if(this.item_val[i] !== 0) {
 				this.item[i].innerText = this.item_val[i];
 			} else {
@@ -222,50 +225,50 @@ function Game_2048() {
 			}
 			var color = '';
 			switch(this.item_val[i]) {
-				case 0:
-					color = '#CDC1B4';
-					break;
-				case 2:
-					color = '#cc9966';
-					break;
-				case 4:
-					color = '#996633';
-					break;
-				case 8:
-					color = '#999966';
-					break;
-				case 16:
-					color = '#cc6666';
-					break;
-				case 32:
-					color = '#ff9999';
-					break;
-				case 64:
-					color = '#ff6633';
-					break;
-				case 128:
-					color = '#999999';
-					break;
-				case 256:
-					color = '#336600';
-					break;
-				case 512:
-					color = '#6699cc';
-					break;
-				case 1024:
-					color = '#663399';
-					break;
-				case 2048:
-					color = '#330033';
-					break;
-				case 4096:
-					color = '#006600';
-					break;
-				case 8192:
-					color = '#333300';
-					break;
-				default:
-					color = '#000000';
+                case 0:
+                    color = '#CDC1B4';
+                    break;
+                case 2:
+                    color = '#ccbd71';
+                    break;
+                case 4:
+                    color = '#998425';
+                    break;
+                case 8:
+                    color = '#6c9994';
+                    break;
+                case 16:
+                    color = '#cc6666';
+                    break;
+                case 32:
+                    color = '#ff9999';
+                    break;
+                case 64:
+                    color = '#ff6633';
+                    break;
+                case 128:
+                    color = '#519969';
+                    break;
+                case 256:
+                    color = '#336600';
+                    break;
+                case 512:
+                    color = '#6699cc';
+                    break;
+                case 1024:
+                    color = '#663399';
+                    break;
+                case 2048:
+                    color = '#330033';
+                    break;
+                case 4096:
+                    color = '#006600';
+                    break;
+                case 8192:
+                    color = '#333300';
+                    break;
+                default:
+                    color = '#000000';
 			}
 			this.item[i].style.backgroundColor = color;
 		}
@@ -287,6 +290,10 @@ function Game_2048() {
 				this.level = this.option.level - 1;
 				this.now_level_number = this.level_number[this.level];
 			}
+            if(typeof(this.option.score) !== 'undefined' && this.option.score !== '') {
+                this.score_label = this.option.score
+            }
+
 		}
 		this.item = container.children;
 		this.item_val = new Array(container.childElementCount);
@@ -296,7 +303,6 @@ function Game_2048() {
 		this.now_level_number = this.level_number[this.level];
 		var tmp_init_filledin = this.level_init[this.level];
 		var tmp_filled = 0;
-		console.log(tmp_init_filledin);
 		for(var i = 0; i < this.item.length; ++i) {
 			tmp_val = 0;
 			if((tmp_filled === 0 && tmp_filled < tmp_init_filledin && i === this.item.length - 1) || (this.getrandom_bool() && tmp_filled < tmp_init_filledin)) {
@@ -313,13 +319,13 @@ function Game_2048() {
 					color = '#CDC1B4';
 					break;
 				case 2:
-					color = '#cc9966';
+					color = '#ccbd71';
 					break;
 				case 4:
-					color = '#996633';
+					color = '#998425';
 					break;
 				case 8:
-					color = '#999966';
+					color = '#6c9994';
 					break;
 				case 16:
 					color = '#cc6666';
@@ -331,7 +337,7 @@ function Game_2048() {
 					color = '#ff6633';
 					break;
 				case 128:
-					color = '#999999';
+					color = '#519969';
 					break;
 				case 256:
 					color = '#336600';
@@ -358,6 +364,7 @@ function Game_2048() {
 		}
 		try {
 			document.getElementById(this.count_round).innerHTML = 0;
+			document.getElementById(this.s)
 		} catch(e) {}
 		document.onkeyup = function(event) {
 			switch(event.keyCode) {

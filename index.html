@@ -28,35 +28,44 @@
 			</p>
 		</div>
 		<div class="header">
-			<p id="message_label"></p>
+			<h3 id="message_label">Link Start</h3>
 		</div>
-
+		<div class="game-description"><p>2048-相邻且相同的数字可以合成两个数的和，相同但是中间隔着一个空的格子也可以</p></div>
 		<div class="body">
 			<div class="left">
-			<div class="tab_additional">
-				<a href="javascript:gamestart()" class="start">开始</a>
-				<label></label>
-				<span id="step_round" title="当前步数">0</span><label></label>
-				<span id="step_all" title="总步数">0</span>
-			</div>
-			<div id="container" class="container">
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-				<div class="item"></div>
-			</div>
+				<div class="tab_additional">
+					<a href="javascript:gamestart()" class="start">开始</a>
+                    <div class="sn">
+                        <label>SN:</label>
+                        <span id="step_round" title="当前步数">0</span>
+                    </div>
+                    <div class="asn">
+                        <label>ASN:</label>
+                        <span id="step_all" title="总步数">0</span>
+                    </div>
+                    <div class="score">
+                        <label for="score">score</label>
+					    <span id="score" title="分数">0</span>
+                    </div>
+				</div>
+				<div id="container" class="container">
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+					<div class="item"></div>
+				</div>
 			</div>
 			<div class="right">
 				<h5>排行榜</h5>
@@ -81,6 +90,37 @@
 						<span class="max-score">2048</span>
 						<span class="date">2018-3-13 11:04</span>
 					</li>
+					<li><label for=""><img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKdDbru8q7iaic5VHcQqSnYicZkHPNiad5UXWl23wZibdSicrL9abOofuqdux4YxZGl5BUEyB5zRQm9DuzQ/132"/></label>
+						<span class="username">可可</span>
+						<span class="max-score">2048</span>
+						<span class="date">2018-3-13 11:04</span>
+					</li>
+					<li><label for=""><img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKdDbru8q7iaic5VHcQqSnYicZkHPNiad5UXWl23wZibdSicrL9abOofuqdux4YxZGl5BUEyB5zRQm9DuzQ/132"/></label>
+						<span class="username">可可</span>
+						<span class="max-score">2048</span>
+						<span class="date">2018-3-13 11:04</span>
+					</li>
+					<li><label for=""><img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKdDbru8q7iaic5VHcQqSnYicZkHPNiad5UXWl23wZibdSicrL9abOofuqdux4YxZGl5BUEyB5zRQm9DuzQ/132"/></label>
+						<span class="username">可可</span>
+						<span class="max-score">2048</span>
+						<span class="date">2018-3-13 11:04</span>
+					</li>
+					<li><label for=""><img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKdDbru8q7iaic5VHcQqSnYicZkHPNiad5UXWl23wZibdSicrL9abOofuqdux4YxZGl5BUEyB5zRQm9DuzQ/132"/></label>
+						<span class="username">可可</span>
+						<span class="max-score">2048</span>
+						<span class="date">2018-3-13 11:04</span>
+					</li>
+					<li><label for=""><img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKdDbru8q7iaic5VHcQqSnYicZkHPNiad5UXWl23wZibdSicrL9abOofuqdux4YxZGl5BUEyB5zRQm9DuzQ/132"/></label>
+						<span class="username">可可</span>
+						<span class="max-score">2048</span>
+						<span class="date">2018-3-13 11:04</span>
+					</li>
+					<li><label for=""><img src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKdDbru8q7iaic5VHcQqSnYicZkHPNiad5UXWl23wZibdSicrL9abOofuqdux4YxZGl5BUEyB5zRQm9DuzQ/132"/></label>
+						<span class="username">可可</span>
+						<span class="max-score">2048</span>
+						<span class="date">2018-3-13 11:04</span>
+					</li>
+					<li><a href="/rank.php">查看排行榜</a></li>
 				</ul>
 			</div>
 		</div>
@@ -90,7 +130,8 @@
 	<script type="text/javascript">
 		function gamestart() {
 			var game_box = document.getElementById('container');
-			gamer_factory.init(game_box, "{'count_round':'step_round','count_all':'step_all','error_label':'message_label','level':1}");
+			gamer_factory.init(game_box,
+                "{'count_round':'step_round','count_all':'step_all','error_label':'message_label','level':1,'score':'score'}");
 		}
 
 		gamer_factory.end = function() {
@@ -103,14 +144,14 @@
 				var ajax_obj = getAjaxObject();
 				ajax_obj.onstatechange = function(ev) {
 
-				}
+				};
 				post(ajax_obj, '/2048/info_cal_in.php', data);
 
 			} else {
 				document.getElementsByClassName('mask')[0].style.display = 'block';
 				document.getElementsByClassName('form')[0].style.display = 'block';
 			}
-		}
+		};
 
 		function showError(str) {
 			var msgobj = document.getElementById('msg');
@@ -123,7 +164,7 @@
 
 		function no_cookies_name_submit() {
 			var username = document.getElementById('nickname').value.replace(/(^\s*)|(\s*$)/g, '');
-			if(typeof username != 'string' || username === '') {
+			if(typeof username !== 'string' || username === '') {
 				showError('请阁下告知您的大名，好让我们铭记于心。')
 			}
 			setCookie('cc_2048_username', username, 360);
