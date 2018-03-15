@@ -401,10 +401,10 @@ function Game_2048() {
 				} else {
 					moveTag = 'left';
 				}
-			} else {
+			} else if(Math.abs(xmoved) < Math.abs(ymoved)){
 				if(ymoved > 0) {
 					moveTag = 'bottom';
-				} else {
+				} else if(ymoved < 0 ){
 					moveTag = 'top';
 				}
 			}
